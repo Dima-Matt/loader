@@ -1,0 +1,12 @@
+@mixin translate ($posX: -50%, $posY: -50%, $deg: 0) {
+    transform: translate($posX, $posY) rotate($deg + $deg);
+}
+
+@mixin relativeCenter ($posX: 50%, $posY: 50%) {
+
+    position: relative;
+    left: $posY;
+    top: $posX;
+    @include translate();
+    
+}
