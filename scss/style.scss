@@ -10,12 +10,14 @@
      height: 100vh;
  }
 
+ 
+
 $squareWidth: 100px;
 .loader {
     width: $squareWidth;
     height: $squareWidth;
     background-color: red;
-    // transition: all 1s ease-in;
+    //transition: all 1s ease-in;
     @include relativeCenter;
     &__triangle {
         position: absolute;
@@ -24,7 +26,7 @@ $squareWidth: 100px;
         border: {
             left: 50px solid transparent;
             right: 50px solid transparent;
-            bottom: 100px solid blue;
+            bottom: 100px solid rgb(255, 0, 60);
         }
     
         &_right {
@@ -49,49 +51,39 @@ $squareWidth: 100px;
         top: 0;
         left: 0;
         z-index: 1;
-    }
-
-    &:has(input:checked) {
-        background-color: rgb(43, 255, 0);
-        // animation: around 1s infinite linear;
-
-        // .loader__triangle {
-        //     border-bottom: 100px solid aqua;
-        // }
-        // &_top {
-        //     @include translate(0, -100%, 0)
-        // }
-        // &_right {
-        //     @include translate(100, 0, 90)
-        // }
-        // &_bottom {
-        //     @include translate(0, 100%, 180)
-        // }
-        // &_left {
-        //     @include translate(-100%, 0, -90)
-        // }
         
 
+    
+    &:has(input:checked) {
+        background-color: rgb(43, 255, 0);
+        position: relative;
+        //transform-origin: 20px 10px;
+        animation: around 1.5s infinite linear;
+        animation: rotation 2s infinite linear;           
         .loader__triangle {
+           
             border-bottom: 100px solid aqua;
-        }
+          
+            &_top {
+            @include translate(0, -100%, 0);
+            }
     
-        .loader__triangle_top {
-            @include translate(0, -100%, 0)
-        }
+            &_right {
+            @include translate(100%, 0, 90);
+            left: 100%;
+            }
     
-        .loader__triangle_right {
-            @include translate(100%, 0, 90)
-        }
+            &_bottom {
+            @include translate(0, -100%, 180);
+            top: 100%;
+            
+            }
     
-        .loader__triangle_bottom {
-            @include translate(0, -100%, 180)
-        }
-    
-        .loader__triangle_left {
-            @include translate(-100%, 0, -90)
-        }
-
+            &_left {
+            @include translate(-100%, 0, -90);
+            right: 100%;
+            }   
+        
     }
 
     
@@ -107,5 +99,17 @@ $squareWidth: 100px;
     
 }
 
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+    
+}
 
 
+}
+}
